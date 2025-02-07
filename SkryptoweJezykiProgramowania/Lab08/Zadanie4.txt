@@ -1,0 +1,1 @@
+regex = r"(?P<street_name>\D+)\s"m

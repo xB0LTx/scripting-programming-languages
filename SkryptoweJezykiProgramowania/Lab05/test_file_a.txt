@@ -1,0 +1,1 @@
+Hello, this is a test file in 'a' mode.Hello, this is a test file in 'a' mode.Hello, this is a test file in 'a' mode.
