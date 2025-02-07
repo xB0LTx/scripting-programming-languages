@@ -1,0 +1,33 @@
+<html lang="pl-PL">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<form name='formularz'>
+  <input type='text' name='tekst' id="textfield" onkeyup="validateText()">
+  <label id="valLabel"></label>
+  <input type="checkbox" name="zaznacz" onchange="validateCheckBox()" />
+</form>
+<script>
+  function validateText() {
+  var val1 = document.forms["formularz"].tekst.value;
+  var val2 = document.getElementById("textfield").value;
+  var label = document.getElementById("valLabel");
+  const reg = /^[a-zA-Z]{3,}$/g; //regex :D
+  if (!reg.test(val1))
+    label.innerHTML = "niepoprawne!"
+  else
+    label.innerHTML = ""
+  }
+  function validateCheckBox() {
+  var label = document.getElementById("valLabel");
+  if (document.forms.formularz.elements["zaznacz"].checked) {
+    label.style.backgroundColor="#ffff00";
+  } else {
+    label.style.backgroundColor="#ffffff";
+  }
+  }
+
+</script>
+</body>
+</html>

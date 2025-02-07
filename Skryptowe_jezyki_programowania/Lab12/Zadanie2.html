@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utwórz hasło</title>
+  <style>
+    .password-mismatch {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<h1>Podaj nowe hasło; musi ono zawierać minimum 8 liter i jedną cyfrę bez żadnych znaków specjalnych.</h1>
+<form id="passwordForm">
+  <label for="password1">Hasło:</label>
+  <input type="password" id="password1" name="password1" onkeyup="checkPasswords()">
+  <br>
+
+  <label for="password2">Powtórz hasło:</label>
+  <input type="password" id="password2" name="password2" onkeyup="checkPasswords()">
+  <br>
+
+  <button type="button" onclick="checkPasswordValidity()">Check Passwords</button>
+</form>
+
+<script>
+  function checkPasswords() {
+    var password1 = document.getElementById('password1').value;
+    var password2 = document.getElementById('password2').value;
+
+    var passwordMismatch = password1 !== password2;
+
+    if (passwordMismatch) {
+      document.getElementById('passwordForm').classList.add('password-mismatch');
+    } else {
+      document.getElementById('passwordForm').classList.remove('password-mismatch');
+    }
+  }
+
+  function checkPasswordValidity() {
+    var password1 = document.getElementById('password1').value;
+    var password2 = document.getElementById('password2').value;
+
+    var passwordMismatch = password1 !== password2;
+    var isValidPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password1);
+
+    if (!isValidPassword || passwordMismatch) {
+      alert('Hasło nie spełnia wymagań, bądź podane hasła są różne!');
+    } else {
+      alert('Hasło zaakceptowane.');
+    }
+  }
+</script>
+
+</body>
+</html>

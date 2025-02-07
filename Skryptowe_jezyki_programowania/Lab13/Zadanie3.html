@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Przycisk z odliczaniem</title>
+  <style>
+    #counterButton {
+      font-size: 16px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<button id="counterButton" onmouseover="increaseCount()" onclick="resetCount()">0</button>
+
+<script>
+  var count = 0;
+
+  function increaseCount() {
+    count++;
+    updateButton();
+  }
+
+  function resetCount() {
+    count = 0;
+    updateButton();
+  }
+
+  function updateButton() {
+    var button = document.getElementById("counterButton");
+    button.innerHTML = count;
+  }
+</script>
+
+</body>
+</html>

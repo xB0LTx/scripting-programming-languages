@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wczytywanie plików</title>
+</head>
+<body>
+
+<input type="file" id="upload" accept=".txt" onchange="doUpload(this);"/>
+<textarea id="editor"></textarea>
+
+<script>
+    function doUpload(uploader) {
+        var selectedFile = uploader.files[0];
+        if (selectedFile) {
+            if (selectedFile.name.endsWith('.txt')) {
+                var reader = new FileReader();
+                reader.readAsText(selectedFile, 'UTF-8');
+                reader.onprogress = function(evt) {
+                    console.log('Postęp wczytywania', evt);
+                };
+                reader.onload = function(evt) {
+                    document.getElementById('editor').innerHTML = evt.target.result;
+                };
+                reader.onerror = function(evt) {
+                    alert('Błąd wczytywania pliku!');
+                };
+            } else {
+                alert('Proszę wybrać plik tekstowy (rozszerzenie .txt).');
+                uploader.value = "";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

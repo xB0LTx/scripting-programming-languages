@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Converter</title>
+</head>
+<body>
+
+<form id="numberConverterForm">
+  <label for="numberInput">Podaj liczbę:</label>
+  <input type="number" id="numberInput" name="numberInput" min="0">
+
+  <label for="conversionType">Wybierz system:</label>
+  <select id="conversionType" name="conversionType">
+    <option value="dec2bin">Dziesiętny na binarny</option>
+    <option value="bin2dec">Binarny na dziesiętny</option>
+  </select>
+
+  <button type="button" onclick="convertNumber()">Konwertuj</button>
+
+  <p id="result">Wynik: </p>
+</form>
+
+<script>
+  function convertNumber() {
+    var numberInput = document.getElementById('numberInput').value;
+    var conversionType = document.getElementById('conversionType').value;
+    var resultElement = document.getElementById('result');
+
+    if (conversionType === 'dec2bin') {
+      var binaryResult = decimalToBinary(numberInput);
+      resultElement.textContent = 'Wynik: ' + binaryResult;
+    } else if (conversionType === 'bin2dec') {
+      var decimalResult = binaryToDecimal(numberInput);
+      resultElement.textContent = 'Wynik: ' + decimalResult;
+    }
+  }
+
+  function decimalToBinary(decimalNumber) {
+    return (decimalNumber >>> 0).toString(2);
+  }
+
+  function binaryToDecimal(binaryNumber) {
+    return parseInt(binaryNumber, 2).toString(10);
+  }
+</script>
+
+</body>
+</html>

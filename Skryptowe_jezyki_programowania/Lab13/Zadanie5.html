@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zmiana koloru przycisku</title>
+</head>
+<body>
+
+<form>
+  <label for="colorPicker">Wybierz kolor:</label>
+  <input type="color" id="colorPicker">
+  <br>
+
+  <button type="button" onclick="changeButtonColor()">Zmień kolor przycisku</button>
+</form>
+
+<script>
+  function changeButtonColor() {
+    var colorPicker = document.getElementById('colorPicker');
+    var selectedColor = colorPicker.value;
+
+    var button = document.querySelector('button');
+
+    if (selectedColor !== '#000000' && selectedColor !== '#ffffff') {
+      button.style.backgroundColor = selectedColor;
+    } else {
+      alert('Proszę wybrać kolor inny niż biały (#ffffff) lub czarny (#000000).');
+    }
+  }
+</script>
+
+</body>
+</html>

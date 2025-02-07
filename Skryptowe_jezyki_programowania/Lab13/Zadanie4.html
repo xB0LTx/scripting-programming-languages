@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Różnica między datami</title>
+</head>
+<body>
+
+<form>
+  <label for="date1">Data 1:</label>
+  <input type="date" id="date1" required>
+  <br>
+
+  <label for="date2">Data 2:</label>
+  <input type="date" id="date2" required>
+  <br>
+
+  <button type="button" onclick="calculateDateDifference()">Oblicz różnicę</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+  function calculateDateDifference() {
+    var date1String = document.getElementById('date1').value;
+    var date2String = document.getElementById('date2').value;
+
+    var date1 = new Date(date1String);
+    var date2 = new Date(date2String);
+
+    var diffMilliseconds = Math.abs(date2 - date1);
+    var diffDays = Math.floor(diffMilliseconds / (1000 * 60 * 60 * 24));
+
+    var resultElement = document.getElementById('result');
+    resultElement.innerHTML = 'Różnica między datami: ' + diffDays + ' dni.';
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generowanie tablicy HTML</title>
+</head>
+<body>
+
+<form>
+  <label for="rows">Liczba wierszy:</label>
+  <input type="number" id="rows" min="1" value="1">
+  <br>
+
+  <label for="columns">Liczba kolumn:</label>
+  <input type="number" id="columns" min="1" value="1">
+  <br>
+
+  <button type="button" onclick="generateTable()">Generuj tablicę</button>
+</form>
+
+<table id="resultTable"></table>
+
+<script>
+  function generateTable() {
+    var rows = document.getElementById('rows').value;
+    var columns = document.getElementById('columns').value;
+
+    var resultTable = document.getElementById('resultTable');
+    resultTable.innerHTML = '';
+
+    for (var i = 0; i < rows; i++) {
+      var row = resultTable.insertRow(i);
+
+      for (var j = 0; j < columns; j++) {
+        var cell = row.insertCell(j);
+        cell.innerHTML = 'R' + (i + 1) + 'C' + (j + 1); //Zawartość komórki udowadaniająca jej istnienie
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

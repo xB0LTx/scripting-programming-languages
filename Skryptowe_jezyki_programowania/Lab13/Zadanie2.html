@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stoper</title>
+</head>
+<body>
+
+<form name="f1">
+  <label id="label">Rozpocznij pomiar</label>
+  <input type="button" value="start" onclick="stoper(1)" />
+  <input type="button" value="stop" onclick="stoper(0)" />
+</form>
+
+<script>
+  var start = null;
+  var stop = null;
+
+  function stoper(znacznik) {
+    var label = document.getElementById("label");
+
+    if (znacznik === 1) {
+      start = new Date();
+      label.innerHTML = "Pomiar trwa";
+
+      clearTimeout(timer);
+    }
+    if (znacznik === 0 && start !== null) {
+      stop = new Date();
+      var seconds = Math.abs(stop - start) / 1000;
+      start = null;
+      label.innerHTML = "Pomiar zakończony: " + seconds.toFixed(2) + " s";
+
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        label.innerHTML = "Rozpocznij pomiar";
+      }, 2000);
+    }
+  }
+</script>
+
+</body>
+</html>
